@@ -1,8 +1,9 @@
 import { useForm } from "react-hook-form"
+import Error from "./Error"
 
 const PatientForm = () => {
 
-  const { register, handleSubmit, formState } = useForm()
+  const { register, handleSubmit, formState: { errors } } = useForm()
 
   const registerPacient = () => {
 
@@ -35,6 +36,8 @@ const PatientForm = () => {
               required: "El nombre del paciente es obligatorio"
             })}
           />
+
+          {errors.name && <Error>{errors.name?.message as string}</Error>}
         </div>
 
         <div className="mb-5">
@@ -46,7 +49,12 @@ const PatientForm = () => {
             className="w-full p-3  border border-gray-100"
             type="text"
             placeholder="Nombre del Propietario"
-          />
+            {...register("caretaker", {
+              required: "El nombre del propietario es obligatorio"
+            })}
+            />
+
+            {errors.caretaker && <Error>{errors.caretaker?.message as string}</Error>}
         </div>
 
         <div className="mb-5">
@@ -58,7 +66,16 @@ const PatientForm = () => {
             className="w-full p-3  border border-gray-100"
             type="email"
             placeholder="Email de Registro"
+            {...register("email", {
+              required: "El Email es Obligatorio",
+              pattern: {
+                value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
+                message: 'Email No Válido'
+              }
+            })} 
           />
+          
+          {errors.email && <Error>{errors.email?.message as string}</Error>}
         </div>
 
         <div className="mb-5">
@@ -69,7 +86,12 @@ const PatientForm = () => {
             id="date"
             className="w-full p-3  border border-gray-100"
             type="date"
+            {...register("date", {
+              required: "La fecha de alta es obligatoria"
+            })}
           />
+          
+          {errors.date && <Error>{errors.date?.message as string}</Error>}
         </div>
 
         <div className="mb-5">
@@ -80,7 +102,12 @@ const PatientForm = () => {
             id="symptoms"
             className="w-full p-3  border border-gray-100"
             placeholder="Síntomas del paciente"
+            {...register("symptoms", {
+              required: "El nombre del paciente es obligatorio"
+            })}
           ></textarea>
+          
+          {errors.symptoms && <Error>{errors.symptoms?.message as string}</Error>}
         </div>
 
         <input
