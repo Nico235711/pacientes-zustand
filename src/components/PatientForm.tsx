@@ -2,7 +2,11 @@ import { useForm } from "react-hook-form"
 
 const PatientForm = () => {
 
-  const { register } = useForm()
+  const { register, handleSubmit, formState } = useForm()
+
+  const registerPacient = () => {
+
+  }
 
   return (
     <div className="md:w-1/2 lg:w-2/5 mx-5">
@@ -16,6 +20,7 @@ const PatientForm = () => {
       <form
         className="bg-white shadow-md rounded-lg py-10 px-5 mb-10"
         noValidate
+        onSubmit={handleSubmit(registerPacient)}
       >
         <div className="mb-5">
           <label htmlFor="name" className="text-sm uppercase font-bold">
