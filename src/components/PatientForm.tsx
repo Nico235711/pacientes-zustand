@@ -6,11 +6,12 @@ import { usePatientStore } from "../store"
 const PatientForm = () => {
 
   const { addPatient } = usePatientStore()
-  const { register, handleSubmit, formState: { errors } } = useForm<DraftPatient>()
+  const { register, handleSubmit, formState: { errors }, reset } = useForm<DraftPatient>()
 
   // recuperar los datos con react-form-hook
   const registerPacient = (data: DraftPatient) => {
     addPatient(data)
+    reset()
   }
 
   return (

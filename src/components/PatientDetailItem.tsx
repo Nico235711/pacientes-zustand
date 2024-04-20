@@ -6,7 +6,7 @@ type PatientDetailItemProps = {
 const PatientDetailItem = ({ label, data }: PatientDetailItemProps) => {
 
   return (
-    <p>
+    <p className="mb-2 last-of-type:mb-0">
       {label}: {""}
       <span className="font-bold">{data}</span>
     </p>
