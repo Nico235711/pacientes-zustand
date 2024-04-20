@@ -1,11 +1,13 @@
 import { useForm } from "react-hook-form"
 import Error from "./Error"
+import { DraftPatient } from "../types"
 
 const PatientForm = () => {
 
-  const { register, handleSubmit, formState: { errors } } = useForm()
+  const { register, handleSubmit, formState: { errors } } = useForm<DraftPatient>()
 
-  const registerPacient = () => {
+  // recuperar los datos con react-form-hook
+  const registerPacient = (data: DraftPatient) => {
 
   }
 
@@ -37,7 +39,8 @@ const PatientForm = () => {
             })}
           />
 
-          {errors.name && <Error>{errors.name?.message as string}</Error>}
+          {/* una vez definido el type el as string ya no es necesario */}
+          {errors.name && <Error>{errors.name?.message}</Error>}
         </div>
 
         <div className="mb-5">
@@ -54,7 +57,7 @@ const PatientForm = () => {
             })}
             />
 
-            {errors.caretaker && <Error>{errors.caretaker?.message as string}</Error>}
+            {errors.caretaker && <Error>{errors.caretaker?.message}</Error>}
         </div>
 
         <div className="mb-5">
@@ -75,7 +78,7 @@ const PatientForm = () => {
             })} 
           />
           
-          {errors.email && <Error>{errors.email?.message as string}</Error>}
+          {errors.email && <Error>{errors.email?.message}</Error>}
         </div>
 
         <div className="mb-5">
@@ -91,7 +94,7 @@ const PatientForm = () => {
             })}
           />
           
-          {errors.date && <Error>{errors.date?.message as string}</Error>}
+          {errors.date && <Error>{errors.date?.message}</Error>}
         </div>
 
         <div className="mb-5">
@@ -107,7 +110,7 @@ const PatientForm = () => {
             })}
           ></textarea>
           
-          {errors.symptoms && <Error>{errors.symptoms?.message as string}</Error>}
+          {errors.symptoms && <Error>{errors.symptoms?.message}</Error>}
         </div>
 
         <input
