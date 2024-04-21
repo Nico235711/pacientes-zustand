@@ -2,11 +2,23 @@ import { useForm } from "react-hook-form"
 import Error from "./Error"
 import { DraftPatient } from "../types"
 import { usePatientStore } from "../store"
+import { useEffect } from "react"
 
 const PatientForm = () => {
 
-  const { addPatient } = usePatientStore()
-  const { register, handleSubmit, formState: { errors }, reset } = useForm<DraftPatient>()
+  const { addPatient, activeId, patients } = usePatientStore()
+  const { register, handleSubmit, setValue, formState: { errors }, reset } = useForm<DraftPatient>()
+
+  useEffect(() => {
+    if (activeId) { // si activeId tiene ejecuta el siguiente código
+      const activePatient = patients.filter(patient => patient.id === activeId)[0]
+      setValue("name", activePatient.name)
+      setValue("caretaker", activePatient.caretaker)
+      setValue("email", activePatient.email)
+      setValue("date", activePatient.date)
+      setValue("symptoms", activePatient.symptoms)
+    }
+  }, [activeId]);
 
   // recuperar los datos con react-form-hook
   const registerPacient = (data: DraftPatient) => {
