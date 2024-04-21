@@ -1,3 +1,4 @@
+import { usePatientStore } from "../store"
 import { Patient } from "../types"
 import PatientDetailItem from "./PatientDetailItem"
 
@@ -6,8 +7,15 @@ type PatientDetailsProps = {
 }
 const PatientDetails = ({ patient }: PatientDetailsProps) => {
 
+  const { deletePatient } = usePatientStore()
+
   return (
     <div className="bg-white shadow-md rounded-lg py-10 px-5 mb-10">
+      <PatientDetailItem 
+        label="ID"
+        data={patient.id}
+      />
+
       <PatientDetailItem 
         label="Nombre del Paciente"
         data={patient.name}
@@ -42,6 +50,7 @@ const PatientDetails = ({ patient }: PatientDetailsProps) => {
         <button
           type="button"
           className="bg-red-600 text-white uppercase text-lg py-2 px-4 rounded-lg font-bold hover:bg-red-700 transition-all"
+          onClick={() => deletePatient(patient.id)}
         >
           Eliminar
         </button>
