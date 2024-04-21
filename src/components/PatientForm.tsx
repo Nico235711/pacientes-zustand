@@ -6,7 +6,7 @@ import { useEffect } from "react"
 
 const PatientForm = () => {
 
-  const { addPatient, activeId, patients } = usePatientStore()
+  const { addPatient, activeId, patients, updatePatient } = usePatientStore()
   const { register, handleSubmit, setValue, formState: { errors }, reset } = useForm<DraftPatient>()
 
   useEffect(() => {
@@ -22,7 +22,12 @@ const PatientForm = () => {
 
   // recuperar los datos con react-form-hook
   const registerPacient = (data: DraftPatient) => {
-    addPatient(data)
+    if (activeId) {
+      updatePatient(data)
+    } 
+    else {
+      addPatient(data)
+    }
     reset()
   }
 
