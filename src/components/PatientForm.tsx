@@ -25,6 +25,9 @@ const PatientForm = () => {
   const registerPacient = (data: DraftPatient) => {
     if (activeId) {
       updatePatient(data)
+      toast.success("Paciente Actualizado Correctamente", {
+        autoClose: 2000
+      })
     } 
     else {
       addPatient(data)
