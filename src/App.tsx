@@ -1,5 +1,7 @@
-import PacientList from "./components/PacientList"
-import PatientForm from "./components/PatientForm"
+import PacientList from './components/PacientList';
+import PatientForm from './components/PatientForm';
+import { ToastContainer } from 'react-toastify';
+import "react-toastify/ReactToastify.css"
 
 const App = () => {
 
@@ -13,6 +15,8 @@ const App = () => {
         <PatientForm />
         <PacientList />
       </div>
+
+      <ToastContainer />
     </div>
   )
 }

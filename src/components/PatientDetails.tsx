@@ -1,6 +1,6 @@
-import { usePatientStore } from "../store"
-import { Patient } from "../types"
-import PatientDetailItem from "./PatientDetailItem"
+import PatientDetailItem from './PatientDetailItem';
+import { Patient } from '../types';
+import { usePatientStore } from '../store';
 
 type PatientDetailsProps = {
   patient: Patient

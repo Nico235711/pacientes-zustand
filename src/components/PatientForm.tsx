@@ -1,8 +1,9 @@
-import { useForm } from "react-hook-form"
-import Error from "./Error"
-import { DraftPatient } from "../types"
-import { usePatientStore } from "../store"
-import { useEffect } from "react"
+import Error from './Error';
+import { DraftPatient } from '../types';
+import { toast } from 'react-toastify';
+import { useEffect } from 'react';
+import { useForm } from 'react-hook-form';
+import { usePatientStore } from '../store';
 
 const PatientForm = () => {
 
@@ -27,6 +28,9 @@ const PatientForm = () => {
     } 
     else {
       addPatient(data)
+      toast.success("Paciente Registrado Correctamente", {
+        autoClose: 2000
+      })
     }
     reset()
   }
@@ -136,7 +140,7 @@ const PatientForm = () => {
         <input
           type="submit"
           className="bg-indigo-600 w-full p-3 text-white uppercase font-bold hover:bg-indigo-700 cursor-pointer transition-colors"
-          value='Guardar Paciente'
+          value={activeId ? 'Editar Paciente' : 'Guardar Paciente'}
         />
       </form>
     </div>
