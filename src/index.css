@@ -1,3 +1,27 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* Estilos generales para el scrollbar */
+.custom-scrollbar::-webkit-scrollbar {
+  width: 12px; /* Ancho del scrollbar */
+  height: 12px; /* Altura del scrollbar horizontal */
+}
+
+/* Estilo de la pista (track) del scrollbar */
+.custom-scrollbar::-webkit-scrollbar-track {
+  background: #E0E0E0; /* Fondo del track */
+  border-radius: 10px; /* Bordes redondeados del track */
+}
+
+/* Estilo del thumb (el manejador que se desplaza) del scrollbar */
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background-color: #4F46E5; /* Color del thumb */
+  border-radius: 10px; /* Bordes redondeados del thumb */
+  border: 2px solid #E0E0E0; /* Borde del thumb para crear un efecto de espacio */
+}
+
+/* Estilo del thumb al hacer hover */
+.custom-scrollbar::-webkit-scrollbar-thumb:hover {
+  background-color: #6C63FF; /* Color del thumb al hacer hover */
+}
