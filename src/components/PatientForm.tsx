@@ -5,7 +5,7 @@ import { useEffect } from 'react';
 import { useForm } from 'react-hook-form';
 import { usePatientStore } from '../store';
 
-const PatientForm = () => {
+const  PatientForm = () => {
 
   const { addPatient, activeId, patients, updatePatient } = usePatientStore()
   const { register, handleSubmit, setValue, formState: { errors }, reset } = useForm<DraftPatient>()
@@ -26,13 +26,15 @@ const PatientForm = () => {
     if (activeId) {
       updatePatient(data)
       toast.success("Paciente Actualizado Correctamente", {
-        autoClose: 2000
+        autoClose: 2000,
+        pauseOnHover: false
       })
     } 
     else {
       addPatient(data)
       toast.success("Paciente Registrado Correctamente", {
-        autoClose: 2000
+        autoClose: 2000,
+        pauseOnHover: false
       })
     }
     reset()

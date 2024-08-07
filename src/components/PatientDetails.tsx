@@ -13,7 +13,8 @@ const PatientDetails = ({ patient }: PatientDetailsProps) => {
   const handleDeleteClick = () => {
     deletePatient(patient.id)
     toast.error("Paciente Eliminado Correctamente", {
-      autoClose: 2000
+      autoClose: 2000,
+      pauseOnHover: false
     })
   }
 
